@@ -1,15 +1,13 @@
 import React from 'react'
-import {
-  Container, Button, Text, Main,
-} from '../../components'
+import { Main } from '../../components'
+// import ProductNewestList from './containers/ProductNewestList'
+import ProductList from './containers/ProductList'
 
 const Products = () => {
   return (
     <Main>
-      <Container>
-        <Text title>Welcome</Text>
-        <Button>Beli Sekarang</Button>
-      </Container>
+      {/* <ProductNewestList /> */}
+      <ProductList />
     </Main>
   )
 }

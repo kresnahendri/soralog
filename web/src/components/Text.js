@@ -20,6 +20,13 @@ const setVariant = (props) => {
       font-size: 10px;
     `
   }
+  if (props.bold) {
+    return css`
+      line-height: 24px;
+      font-size: 16px;
+      font-weight: bold;
+    `
+  }
   return css`
     line-height: 21px;
     font-size: 14px;

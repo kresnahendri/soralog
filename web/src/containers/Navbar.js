@@ -8,19 +8,18 @@ const Root = styled(Flex)`
   right: 0px;
   left: 0px;
   background: linear-gradient(0deg, rgb(179, 179, 179), rgb(179, 179, 179) 49%, transparent 51%) center bottom / 100% 0.1rem no-repeat rgb(255, 255, 255);
-  z-index: 1;
+  z-index: 10;
   min-height: 56px;
   justify-content: flex-start;
 `
 const Wrapper = styled(Flex)`
-  width: 100%;
-  max-width: 480px;
+  width: calc(100% - 32px);
+  max-width: 448px;
   margin: 0px auto;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0 16px;
 `
 const Icon = styled.img`
   width: 24px;

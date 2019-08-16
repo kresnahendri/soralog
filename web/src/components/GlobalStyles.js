@@ -8,4 +8,11 @@ export default createGlobalStyle`
   * {
     font-family: 'Montserrat', sans-serif;
   }
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+  p {
+    margin: 0;
+  }
 `

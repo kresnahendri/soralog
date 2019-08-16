@@ -4,6 +4,7 @@ import { Products, ProductDetails } from '../pages'
 import { Navbar } from '../containers'
 import asset from '../constants/asset'
 import { Text, Flex } from '../components'
+import history from './history'
 
 const NavContentIcons = () => {
   const imgStyles = {
@@ -21,7 +22,7 @@ const NavContentIcons = () => {
 }
 const Routes = () => {
   return (
-    <Router>
+    <Router history={history}>
       <>
         <Navbar
           icon={asset.icon.back}
