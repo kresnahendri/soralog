@@ -11,8 +11,10 @@ module.exports = () => {
       filename: 'bundled.js',
     },
     devServer: {
+      contentBase: path.resolve(__dirname, '../build'),
       hot: true,
       port: 3000,
+      historyApiFallback: true,
     },
     module: {
       rules: [

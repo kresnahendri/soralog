@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Router, Route, Switch } from 'react-router-dom'
 import React from 'react'
 import { Products, ProductDetails } from '../pages'
 import { Navbar } from '../containers'
@@ -23,15 +23,17 @@ const NavContentIcons = () => {
 const Routes = () => {
   return (
     <Router history={history}>
-      <>
+      <div>
         <Navbar
           icon={asset.icon.back}
           title={<Text title>Dress</Text>}
           right={<NavContentIcons />}
         />
-        <Route path="/" exact component={Products} />
-        <Route path="/products/:slug" exact component={ProductDetails} />
-      </>
+        <Switch>
+          <Route path="/" exact component={Products} />
+          <Route path="/products/:slug" exact component={ProductDetails} />
+        </Switch>
+      </div>
     </Router>
   )
 }

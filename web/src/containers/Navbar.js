@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { Flex } from '../components'
+import asset from '../constants/asset'
 
 const Root = styled(Flex)`
   position: fixed;
@@ -32,11 +34,28 @@ const Title = styled.div`
 const Right = styled.div``
 
 const Navbar = ({ icon, title, right }) => {
+  const [link, setLink] = useState('/')
+  const isRootPath = window.location.pathname === '/'
+  useEffect(() => {
+    if (window.location.pathname.includes('/producs')) {
+      setLink('/')
+    }
+  })
   return (
     <Root>
       <Wrapper>
-        <Icon src={icon} />
-        <Title>{title}</Title>
+        {
+          !isRootPath && (
+            <Link to={link}>
+              <Icon src={icon} />
+            </Link>
+          )}
+        {
+          isRootPath
+            ? <div style={{ flex: 1 }}><img src={asset.icon.logo} alt="" style={{ width: '115px' }} /></div>
+            : <Title>{title}</Title>
+        }
+
         <Right>{right}</Right>
       </Wrapper>
     </Root>

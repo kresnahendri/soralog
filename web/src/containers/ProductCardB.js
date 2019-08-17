@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import {
   Flex, Text, Button, Container,
 } from '../components'
 import asset from '../constants/asset'
 import theme from '../constants/theme'
+import history from '../routes/history'
 
 const Image = styled.img`
   width: 100%;
@@ -34,7 +36,7 @@ const Label = styled.div`
   font-weight: border-left;
 `
 const ProductCard = ({
-  img, name, price, sizes, isLoved, label,
+  img, name, price, sizes, isLoved, label, link,
 }) => {
   const [loved, setLoved] = React.useState(isLoved)
   const selectedHeart = loved ? asset.icon.heartActive : asset.icon.heart
@@ -46,7 +48,9 @@ const ProductCard = ({
   return (
     <div>
       <div style={{ position: 'relative' }}>
-        <Image src={img} />
+        {/* <Link to={link}> */}
+        <Image src={img} onClick={() => history.push(link)} />
+        {/* </Link> */}
         {
           label &&
           <Label><Text medium>{label}</Text></Label>

@@ -34,6 +34,7 @@ const ProductList = () => {
             price="159.000"
             sizes="L, M, S, XL"
             label="Produk Terlaris"
+            link="/products/product-slug-text"
           />
         ))
       }
