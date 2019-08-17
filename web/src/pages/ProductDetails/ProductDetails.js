@@ -15,6 +15,7 @@ const mockProduct = {
     currency: 'IDR',
     __typename: 'Money',
   },
+  category: 'Mini Dress',
   images: [
     {
       fullUrl: 'https://imager-next.freetls.fastly.net/images/resized/480/e49a4fa5-b2c6-4d44-a8df-b66af7881c01',

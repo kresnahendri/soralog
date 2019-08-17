@@ -14,7 +14,7 @@ const ProductNewestList = () => {
           <Text
             tag="a"
             style={{ fontWeight: 'bold', color: theme.color.primary, cursor: 'pointer' }}
-            onClick={() => console.log('Remove promo card')}
+            onClick={() => {}}
           >{'LIHAT SEMUA >'}
           </Text>
         </Flex>

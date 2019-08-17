@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import marked from 'marked'
 import {
   Container, Text, Flex, Divider, Button,
 } from '../../../components'
