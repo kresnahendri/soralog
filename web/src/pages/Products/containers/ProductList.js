@@ -18,20 +18,19 @@ const ProductList = (props) => {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    console.log('INIT FETCH')
-    _getProducts().subscribe()
+    if (props.products.length === 0) {
+      _getProducts().subscribe()
+    }
   }, [])
 
   useEffect(() => {
     if (isReachedBottom && !isLoading && !isAllFetched) {
-      console.log('FETCH MORE')
       _getProducts().subscribe()
     }
   })
 
   const _getProducts = () => {
     setIsLoading(true)
-    console.log(props.offset)
     return getProducts(props.offset, props.limit).pipe(
       tap((res) => {
         props.setProducts(res)
@@ -41,7 +40,6 @@ const ProductList = (props) => {
         setIsLoading(false)
       }),
       catchError((error) => {
-        console.log('ERROR')
         return of(error).pipe(
           delay(10000),
           tap(() => setIsLoading(false))

@@ -42,4 +42,12 @@ productRouter.put('/:id', chechkAuth, (req, res) => {
     )
 })
 
+productRouter.delete('/:id', chechkAuth, (req, res) => {
+  from(Product.deleteOne({ _id: req.params.id }))
+    .subscribe(
+      (product) => responseSuccess(res, { product }),
+      (err) => responseError(res, err.message)
+    )
+})
+
 export default productRouter

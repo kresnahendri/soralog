@@ -12,15 +12,27 @@ import { setTitle } from '../../store/actions/uiActions'
 
 const ProductDetails = (props) => {
   const [product, setProduct] = useState(null)
+  const [slug, setSlug] = useState(props.match.params.slug)
   useEffect(() => {
-    props.setTitle('')
-    const { slug } = props.match.params
-    getProductDetails(slug).subscribe((res) => {
-      setProduct(res)
-      props.setTitle(res.title)
-    })
+    _getProductDetails()
   }, [])
 
+  useEffect(() => {
+    if (slug !== props.match.params.slug) {
+      setSlug(props.match.params.slug)
+      _getProductDetails()
+    }
+  })
+
+  const _getProductDetails = () => {
+    props.setTitle('')
+    setSlug(props.match.params.slug)
+    getProductDetails(props.match.params.slug).subscribe((res) => {
+      setProduct(res)
+      props.setTitle(res.title)
+      window.scrollTo({ top: 0 })
+    })
+  }
   if (product === null) {
     return (
       <Flex fd="column">

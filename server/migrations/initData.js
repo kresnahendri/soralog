@@ -23,6 +23,7 @@ db.connectMongo()
             slug: data.slug,
             title: data.title,
             variants: data.variants,
+            category: data.category,
           })
         })
         .map((newProduct) => from(newProduct.save()))

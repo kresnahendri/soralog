@@ -14,7 +14,7 @@ userRouter.post('/login', (req, res) => {
 
     switchMap((user) => {
       if (user === null) {
-        return throwError({ message: 'User not found', status: 404 })
+        return throwError({ message: 'Login Failed', status: 404 })
       }
 
       return auth.compare(req.body.password, user.password).pipe(

@@ -40,6 +40,9 @@ const productSchema = new mongoose.Schema({
       type: String,
     },
   }],
+  category: {
+    type: String,
+  },
 }, { timestamps: true })
 
 export default mongoose.model('Product', productSchema)
