@@ -30,6 +30,16 @@ const Icon = styled.img`
 `
 const Title = styled.div`
   flex: 1;
+  white-space: nowrap;
+  > p {
+    flex: 1;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @media screen and (max-width: 480px){
+      max-width: 140px;
+    }
+  }
 `
 const Right = styled.div``
 

@@ -1,5 +1,6 @@
 import { Router, Route, Switch } from 'react-router-dom'
 import React from 'react'
+import { connect } from 'react-redux'
 import { Products, ProductDetails } from '../pages'
 import { Navbar } from '../containers'
 import asset from '../constants/asset'
@@ -20,13 +21,13 @@ const NavContentIcons = () => {
     </Flex>
   )
 }
-const Routes = () => {
+const Routes = (props) => {
   return (
     <Router history={history}>
       <div>
         <Navbar
           icon={asset.icon.back}
-          title={<Text title>Dress</Text>}
+          title={<Text title>{props.title}</Text>}
           right={<NavContentIcons />}
         />
         <Switch>
@@ -38,4 +39,6 @@ const Routes = () => {
   )
 }
 
-export default Routes
+export default connect((state) => ({
+  title: state.ui.title,
+}))(Routes)

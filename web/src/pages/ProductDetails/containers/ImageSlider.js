@@ -10,6 +10,7 @@ const MainImage = styled(Flex)`
   overflow: hidden;
   img {
     width: 100%;
+    max-height: 800px;
   }
 `
 const Thumbnail = styled.div`
@@ -42,7 +43,7 @@ const ImageSlider = ({ images }) => {
         }
       </MainImage>
       <Flex style={{ overflow: 'auto', padding: '8px 12px' }} jc="flex-start">
-        {
+        { images.length > 1 &&
           images.map((image, i) => (
             <Thumbnail key={i} active={activeIdx === i} onClick={() => setActiveIdx(i)}>
               <img src={image.fullUrl} alt="" />

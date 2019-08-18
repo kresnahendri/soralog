@@ -33,14 +33,14 @@ const DetailDescription = ({ detailMarkdown, descriptionMarkdown }) => {
             <Box h="10" />
             <Text>Detail</Text>
             <Box h="10" />
-            <Text dangerouslySetInnerHTML={{ __html: marked(detailMarkdown) }} />
+            <Text dangerouslySetInnerHTML={{ __html: marked(detailMarkdown || '') }} />
           </div>
           <Divider />
           <div style={{ padding: '10px 16px' }}>
             <Box h="10" />
             <Text>Panduan Ukuran</Text>
             <Box h="10" />
-            <Text dangerouslySetInnerHTML={{ __html: marked(descriptionMarkdown) }} />
+            <Text dangerouslySetInnerHTML={{ __html: marked(descriptionMarkdown || '') }} />
           </div>
         </>
         )}

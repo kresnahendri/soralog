@@ -10,5 +10,6 @@ export default {
     heartActive: 'https://salestock-public-prod.freetls.fastly.net/balok-assets/assets/img/icons/icon-heart-berry-2ef24dd865381c62a8ff8df784d9615c.png',
     logo: 'https://s3-ap-southeast-1.amazonaws.com/salestock-public-production/images/logo-sorabel.png',
     search: 'https://salestock-public-prod.freetls.fastly.net/balok-assets/assets/img/icons/icon-search-greyDark-75485234b11747c9cab05016d0c0c4be.png',
+    loading: 'https://s3-ap-southeast-1.amazonaws.com/salestock-public-production/images/loading-sorabel-grey.gif',
   },
 }
