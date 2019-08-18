@@ -7,7 +7,7 @@ const Products = () => {
   return (
     <Main>
       {/* <ProductNewestList /> */}
-      <ProductList />
+      <ProductList withFilter />
     </Main>
   )
 }

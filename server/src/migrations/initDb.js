@@ -1,9 +1,9 @@
 import { switchMap } from 'rxjs/operators'
 import { from, zip } from 'rxjs'
-import db from '../src/lib/db'
-import logger from '../src/lib/logger'
-import Product from '../src/models/product'
-import User from '../src/models/user'
+import db from '../lib/db'
+import logger from '../lib/logger'
+import Product from '../models/product'
+import User from '../models/user'
 import initialData from './data/initialData'
 
 db.connectMongo()
@@ -36,4 +36,5 @@ db.connectMongo()
   .subscribe({
     error: (error) => logger.error(error),
     next: (x) => logger.info(`Data migration is completed: ${x.length} total data inserted`),
+    complete: () => process.exit(),
   })

@@ -1,9 +1,6 @@
 /* eslint-disable no-alert */
 import React from 'react'
 import {
-  AppBar,
-  Toolbar,
-  Typography,
   TableRow,
   TableBody,
   TableCell,
@@ -13,33 +10,27 @@ import {
   CircularProgress,
   Box,
   Button,
+  Modal,
 } from '@material-ui/core'
-import { finalize } from 'rxjs/operators'
 import { toastr } from 'react-redux-toastr'
-import productService from '../../services/productService'
-import history from '../../routes/history'
+import { connect } from 'react-redux'
+import productService from '../../../services/productService'
+import history from '../../../routes/history'
+import EditProduct from './EditProduct'
+import { getProducts, setProducts } from '../../../store/actions/productActions'
 
-const ProductList = () => {
-  const [products, setProducts] = React.useState([])
-  const [isLoading, setIsLoading] = React.useState(true)
+const ProductList = (props) => {
+  const { products, isLoading } = props
+  const [showEditModal, setShowEditModal] = React.useState(false)
+  const [selectedProduct, setSelectedProduct] = React.useState(null)
+
   React.useEffect(() => {
     const accessToken = localStorage.getItem('accessToken')
     if (accessToken === null) {
       history.push('/login')
     }
-    productService.getProducts()
-      .pipe(
-        finalize(() => setIsLoading(false))
-      )
-      .subscribe({
-        next: (res) => setProducts(res),
-      })
+    props.getProducts()
   }, [])
-
-  const handleLogout = () => {
-    localStorage.removeItem('accessToken')
-    history.push('/login')
-  }
 
   const handleDeleteProduct = (id) => {
     productService.deleteProduct(id)
@@ -52,7 +43,7 @@ const ProductList = () => {
               ...products.splice(0, removedIdx),
               ...products.splice(removedIdx, products.length - 1),
             ]
-          setProducts(newProducts)
+          props.setProducts(newProducts)
           toastr.success('Success', 'Item deleted')
         },
         error: (error) => toastr.error('Error', error.response.data.message),
@@ -61,26 +52,6 @@ const ProductList = () => {
 
   return (
     <div>
-      <AppBar position="fixed" style={{ background: 'rgb(172, 20, 90)' }}>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Toolbar>
-            <Typography variant="h6" noWrap>
-            Soralog Dashboard
-            </Typography>
-          </Toolbar>
-          <Typography
-            variant="button"
-            noWrap
-            style={{ marginRight: '20px', cursor: 'pointer' }}
-            onClick={() => handleLogout()}
-          >
-            Logout
-          </Typography>
-        </Box>
-      </AppBar>
-      <Box display="flex" justifyContent="flex-end" style={{ margin: '80px auto 0', textAlign: 'right' }}>
-        <Button color="primary" variant="contained">Create</Button>
-      </Box>
       {
         isLoading && (
           <Box display="flex">
@@ -118,7 +89,14 @@ const ProductList = () => {
                     <TableCell align="right">{product.category}</TableCell>
                     <TableCell align="right">
                       <Box display="flex">
-                        <Button color="primary">Edit</Button>
+                        <Button
+                          color="primary"
+                          onClick={() => {
+                            setSelectedProduct(product)
+                            setShowEditModal(true)
+                          }}
+                        >Edit
+                        </Button>
                         <Button
                           color="secondary"
                           onClick={() => {
@@ -137,8 +115,25 @@ const ProductList = () => {
             </Table>
           )}
       </Paper>
+      <Modal
+        onClose={() => setShowEditModal(false)}
+        open={showEditModal}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <EditProduct values={selectedProduct} />
+      </Modal>
     </div>
   )
 }
 
-export default ProductList
+export default connect(
+  (state) => ({
+    products: state.product.products,
+    isLoading: state.product.isLoading,
+  }),
+  {
+    getProducts,
+    setProducts,
+  }
+)(ProductList)

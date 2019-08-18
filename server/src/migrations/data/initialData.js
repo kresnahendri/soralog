@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export default [
   {
     id: 'da10b33b-d0c0-4315-9573-212999dd79af',

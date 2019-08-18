@@ -18,7 +18,27 @@ const deleteProduct = (id) => {
   })
 }
 
+const createProduct = (body) => {
+  return requestApi({
+    uri: '/products',
+    method: 'post',
+    body,
+    withAuth: true,
+  })
+}
+
+const updateProduct = (id, body) => {
+  return requestApi({
+    uri: `/products/${id}`,
+    method: 'put',
+    body,
+    withAuth: true,
+  })
+}
+
 export default {
   getProducts,
   deleteProduct,
+  createProduct,
+  updateProduct,
 }

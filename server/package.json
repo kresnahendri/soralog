@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
-    "migration:mongo-init": "nodemon --exec babel-node migrations/initData.js"
+    "build": "babel src -d build",
+    "migration:mongo-init": "npm run build && node build/migrations/initDb.js",
+    "lint": "esw ."
   },
   "author": "kresnahendri",
   "license": "ISC",
@@ -25,6 +27,7 @@
     "rxjs": "^6.5.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
     "@babel/core": "^7.4.3",
     "@babel/node": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.4.0",

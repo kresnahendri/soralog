@@ -1,5 +1,7 @@
 import React from 'react'
-import { Box, Button, TextField } from '@material-ui/core'
+import {
+  Box, Button, TextField, Typography,
+} from '@material-ui/core'
 import { toastr } from 'react-redux-toastr'
 import authService from '../../services/authService'
 import history from '../../routes/history'
@@ -22,6 +24,7 @@ const Login = () => {
 
   return (
     <Box display="flex" justifyContent="center" alignItems="center" style={{ height: '100vh', flexDirection: 'column' }}>
+      <Typography variant="h6">Soralog Admin Dashboard</Typography>
       <form onSubmit={handleSubmit}>
         <div>
           <TextField

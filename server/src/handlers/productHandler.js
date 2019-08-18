@@ -7,7 +7,7 @@ import { chechkAuth } from '../middlewares/authMiddleware'
 const productRouter = express.Router()
 
 productRouter.get('/', (req, res) => {
-  from(Product.find())
+  from(Product.find().sort('-createdAt'))
     .subscribe(
       (products) => responseSuccess(res, { products }),
       (err) => responseError(res, err.message)

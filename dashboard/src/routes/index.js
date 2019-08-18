@@ -2,7 +2,7 @@ import ReduxToastr from 'react-redux-toastr'
 import { Router, Route, Switch } from 'react-router-dom'
 import React from 'react'
 import history from './history'
-import { ProductList, Login } from '../pages'
+import { Products, Login } from '../pages'
 
 const Routes = () => {
   return (
@@ -18,7 +18,7 @@ const Routes = () => {
       />
       <div>
         <Switch>
-          <Route path="/" exact component={ProductList} />
+          <Route path="/" exact component={Products} />
           <Route path="/login" exact component={Login} />
         </Switch>
       </div>
