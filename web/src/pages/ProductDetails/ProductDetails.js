@@ -13,6 +13,7 @@ import { setTitle } from '../../store/actions/uiActions'
 const ProductDetails = (props) => {
   const [product, setProduct] = useState(null)
   useEffect(() => {
+    props.setTitle('')
     const { slug } = props.match.params
     getProductDetails(slug).subscribe((res) => {
       setProduct(res)
