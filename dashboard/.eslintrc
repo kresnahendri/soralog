@@ -1,0 +1,101 @@
+{
+  "env": {
+    "es6": true,
+    "mocha": true,
+    "browser": true,
+    "node": true,
+    "amd": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb"
+  ],
+  "parser": "babel-eslint",
+  "plugins": [
+    "babel"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "camelcase": 0,
+    "arrow-parens": [
+      "error",
+      "always"
+    ],
+    "no-use-before-define": [
+      "error",
+      {
+        "variables": false
+      }
+    ],
+    "max-len": [
+      1,
+      180,
+      4
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "arrow-body-style": [
+      "off"
+    ],
+    "no-underscore-dangle": [
+      "off"
+    ],
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowTernary": true
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "ignore"
+      }
+    ],
+    "operator-linebreak": "off",
+    "import/prefer-default-export": "off",
+    "global-require": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/forbid-prop-types": "off",
+    "react/no-array-index-key": "off",
+    "react/prop-types": "off",
+    "react/destructuring-assignment": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    },
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "detect"
+    }
+  }
+}
