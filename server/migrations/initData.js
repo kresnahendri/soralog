@@ -3,13 +3,15 @@ import { from, zip } from 'rxjs'
 import db from '../src/lib/db'
 import logger from '../src/lib/logger'
 import Product from '../src/models/product'
+import User from '../src/models/user'
 import initialData from './data/initialData'
 
 db.connectMongo()
   .pipe(
     switchMap(() => Product.deleteMany()),
+    switchMap(() => User.deleteMany()),
     switchMap(() => {
-      const createObservables = initialData
+      const createProductObservables = initialData
         .map((data) => {
           return Product({
             descriptionMarkdown: data.descriptionMarkdown,
@@ -24,8 +26,10 @@ db.connectMongo()
           })
         })
         .map((newProduct) => from(newProduct.save()))
+      const admin = User({ username: 'admin', password: 'admin' })
+      const createAdminObservables = from(admin.save())
 
-      return zip(...createObservables)
+      return zip(...createProductObservables, createAdminObservables)
     })
   )
   .subscribe({
