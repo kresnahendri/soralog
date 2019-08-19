@@ -2,7 +2,9 @@ import { Router, Route, Switch } from 'react-router-dom'
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { Products, ProductDetails, Wishlist } from '../pages'
+import {
+  Products, ProductDetails, Wishlist, Cart,
+} from '../pages'
 import { Navbar } from '../containers'
 import asset from '../constants/asset'
 import { Text, Flex, Badge } from '../components'
@@ -51,7 +53,7 @@ const Routes = (props) => {
         <Switch>
           <Route path="/" exact component={Products} />
           <Route path="/wishlist" exact component={Wishlist} />
-          <Route path="/cart" exact component={Products} />
+          <Route path="/cart" exact component={Cart} />
           <Route path="/products/:slug" exact component={ProductDetails} />
         </Switch>
       </div>

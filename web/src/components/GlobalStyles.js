@@ -7,6 +7,7 @@ export default createGlobalStyle`
   }
   * {
     font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
   }
   a {
     cursor: pointer;

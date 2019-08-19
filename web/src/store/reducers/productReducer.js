@@ -10,6 +10,7 @@ const initialState = {
   limit: 5,
   offset: 0,
   wishlist: getWishlist(),
+  cart: [],
 }
 
 export default (state = initialState, action) => {

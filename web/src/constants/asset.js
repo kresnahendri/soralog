@@ -11,5 +11,6 @@ export default {
     logo: 'https://s3-ap-southeast-1.amazonaws.com/salestock-public-production/images/logo-sorabel.png',
     search: 'https://salestock-public-prod.freetls.fastly.net/balok-assets/assets/img/icons/icon-search-greyDark-75485234b11747c9cab05016d0c0c4be.png',
     loading: 'https://s3-ap-southeast-1.amazonaws.com/salestock-public-production/images/loading-sorabel-grey.gif',
+    close: 'https://salestock-public-prod.freetls.fastly.net/balok-assets/assets/img/icons/icon-x-grey-46baba80453194c61333298c80224c50.png',
   },
 }

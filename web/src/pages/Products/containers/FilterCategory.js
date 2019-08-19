@@ -27,7 +27,7 @@ const Select = styled(Flex)`
 `
 const FilterCategory = (props) => {
   const [showSort, setShowSort] = React.useState(false)
-  const [showFilter, setShowFilter] = React.useState(true)
+  const [showFilter, setShowFilter] = React.useState(false)
   const [sort, setSort] = React.useState('-createdAt')
 
   const handleSort = (selected) => {

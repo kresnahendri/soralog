@@ -7,7 +7,10 @@ import {
 import { setTitle } from '../../store/actions/uiActions'
 import history from '../../routes/history'
 
-const Wishlist = ({ wishlist }) => {
+const Wishlist = ({ wishlist, ...props }) => {
+  React.useEffect(() => {
+    props.setTitle('Whislist')
+  }, [])
   return (
     <Main>
       <div style={{ background: 'white' }}>
@@ -32,7 +35,8 @@ const Wishlist = ({ wishlist }) => {
               <Box h="20" />
               <Button primary onClick={() => history.push('/')}>MULAI BELANJA</Button>
             </Card>
-          )}
+          )
+        }
       </div>
     </Main>
   )
