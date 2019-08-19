@@ -48,10 +48,10 @@ npm run start:noinstall
 
 |App|URL|
 |---|---|
-| Website | http://localhost:3000 |
-| Dashboard | http://localhost:3001 |
-| Server - GQL | http://localhost:4000/graphql (powered by Apollo Playground) |
-| Server - REST | http://localhost:4000/api |
+| Website | <http://localhost:3000> |
+| Dashboard | <http://localhost:3001> |
+| Server - GQL | <http://localhost:4000/graphql> (powered by Apollo Playground) |
+| Server - REST | <http://localhost:4000/api> |
 
 ### Run independently
 
@@ -75,6 +75,7 @@ npm start
 ## Screenshots
 
 ### Web
+
 |||
 |---|---|
 |![Catalog](http://recordit.co/yccCbWjGe4.gif)|![Product Details](http://recordit.co/Qn4P7H6P7g.gif)|
@@ -89,4 +90,7 @@ npm start
 ```bash
 # Server
 cd server && npm test
+
+# Web
+cd web && npm test
 ```
