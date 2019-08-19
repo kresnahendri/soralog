@@ -1,7 +1,7 @@
 # soralog
 
 Ecommerce catalog inspired by Sorabel. Frontend was built using ReactJS and Backend built by NodeJS.
-Communation that using is REST API and GraphQL. There's some features in this App.
+Communation that using is REST API and GraphQL. Below are the available features.
 
 **Web**
 
@@ -17,13 +17,12 @@ Communation that using is REST API and GraphQL. There's some features in this Ap
 
 **Backend Server**
 
-- GraphQL
+- **GraphQL**
   - Query: getProducts
   - Query: getProductDetails
 
-*REST API*
-
-- GET products `/api/products`
+- **REST API**
+  - GET products `/api/products`
   - POST products `/api/products`
   - PUT products `/api/products/:id`
   - DELET products `/api/products/:id`
