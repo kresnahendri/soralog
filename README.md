@@ -75,11 +75,10 @@ npm start
 ## Screenshots
 
 ### Web
-
-![Catalog](http://recordit.co/yccCbWjGe4.gif)
-![Product Details](http://recordit.co/Qn4P7H6P7g.gif)
-![Wishlist](http://g.recordit.co/OEgctpCZ4B.gif)
-![Cart](http://recordit.co/cLUOmZxbc4.gif)
+|||
+|---|---|
+|![Catalog](http://recordit.co/yccCbWjGe4.gif)|![Product Details](http://recordit.co/Qn4P7H6P7g.gif)|
+|![Wishlist](http://g.recordit.co/OEgctpCZ4B.gif)|![Cart](http://recordit.co/cLUOmZxbc4.gif)|
 
 ### Dashboard
 
