@@ -28,10 +28,11 @@ export const getProductDetails = (slug = '') => {
   )
 }
 
-export const getProducts = (offset, limit) => {
+export const getProducts = (offset, limit, sort) => {
   const query = `
   {
-    getProducts(offset: ${offset}, limit: ${limit}) {
+    getProducts(offset: ${offset}, limit: ${limit}, sort: "${sort}") {
+      _id
       title
       slug
       images {

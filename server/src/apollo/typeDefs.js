@@ -15,6 +15,7 @@ export default gql`
   }
 
   type Product {
+    _id: ID!
     descriptionMarkdown: String
     detailMarkdown: String
     images: [ProductImage]
@@ -26,7 +27,7 @@ export default gql`
   }
 
   type Query {
-    getProducts(offset: Int, limit: Int): [Product]
+    getProducts(offset: Int, limit: Int, sort: String): [Product]
     getProductDetails(slug: String): Product
   }
 `

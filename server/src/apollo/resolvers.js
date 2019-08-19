@@ -2,10 +2,12 @@ import { defer, from } from 'rxjs'
 import Product from '../models/product'
 import { rxResolver } from '../lib/rxResolver'
 
-const getProducts = (_, { offset = 0, limit = 5, sort = '-createdAt' }) => {
+const getProducts = (_, {
+  offset = 0, limit = 5, sort = '-createdAt', filter = '{ "quantity": { "$gt": 0 } }',
+}) => {
   return rxResolver(
     defer(() => from(
-      Product.find()
+      Product.find(JSON.parse(filter))
         .skip(offset)
         .limit(limit)
         .sort(sort)

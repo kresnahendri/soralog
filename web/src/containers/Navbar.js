@@ -49,6 +49,8 @@ const Navbar = ({ icon, title, right }) => {
   useEffect(() => {
     if (window.location.pathname.includes('/producs')) {
       setLink('/')
+    } else if (window.location.pathname.includes('/wishlist')) {
+      setLink('/')
     }
   })
   return (

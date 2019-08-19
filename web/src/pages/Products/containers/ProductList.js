@@ -5,12 +5,14 @@ import {
 import { connect } from 'react-redux'
 import { of } from 'rxjs'
 import {
-  Flex, Text, Container, Button, LoadingIcon, Box,
+  Flex, Text, Container, LoadingIcon, Box,
 } from '../../../components'
 import { ProductCardB } from '../../../containers'
 import { useScroll } from '../../../lib/hooks'
-import { getProducts } from '../../../services/productService'
+import * as productService from '../../../services/productService'
 import { setProducts } from '../../../store/actions/productActions'
+import wishslistService from '../../../services/wishlistService'
+import FilterCategory from './FilterCategory'
 
 const ProductList = (props) => {
   const { isReachedBottom } = useScroll()
@@ -19,19 +21,19 @@ const ProductList = (props) => {
 
   useEffect(() => {
     if (props.products.length === 0) {
-      _getProducts().subscribe()
+      getProducts().subscribe()
     }
   }, [])
 
   useEffect(() => {
     if (isReachedBottom && !isLoading && !isAllFetched) {
-      _getProducts().subscribe()
+      getProducts().subscribe()
     }
   })
 
-  const _getProducts = () => {
+  const getProducts = (offset = props.offset, limit = props.limit, sort = '-createdAt') => {
     setIsLoading(true)
-    return getProducts(props.offset, props.limit).pipe(
+    return productService.getProducts(offset, limit, sort).pipe(
       tap((res) => {
         props.setProducts(res)
         if (res.length === 0) {
@@ -48,7 +50,6 @@ const ProductList = (props) => {
     )
   }
 
-  // console.log(products)
   return (
     <>
       <div style={{ background: 'white' }}>
@@ -58,28 +59,32 @@ const ProductList = (props) => {
             <Text title>Rekomendasi Produk</Text>
           </Flex>
           {
-            props.withFilter && (
-              <Flex jc="flex-start" style={{ marginBottom: '15px' }}>
-                <Button color="white" style={{ minWidth: '0', marginRight: '20px' }}>Urutkan</Button>
-                <Button color="white" style={{ minWidth: '0' }}>Filter</Button>
-              </Flex>
-            )
+            props.withFilter && <FilterCategory onFilter={getProducts} onSort={getProducts} />
           }
         </Container>
         {
-          props.products.map((product, i) => {
-            return (
-              <ProductCardB
-                key={i}
-                img={product.images.length > 0 ? product.images[0].fullUrl : ''}
-                name={product.title}
-                price={product.price.amount}
-                sizes="L, M, S, XL"
-                // label="Produk Terlaris"
-                link={`/products/${product.slug}`}
-              />
-            )
-          })
+          props.products
+            .filter((product) => {
+              if (props.match === undefined) return product
+              const { slug } = props.match.params
+              return (slug) ? product.slug !== slug : product
+            })
+            .map((product) => {
+              const wishslist = wishslistService.getWishlist()
+              const isLoved = wishslist.find((w) => w._id === product._id)
+              return (
+                <ProductCardB
+                  key={product._id}
+                  img={product.images.length > 0 ? product.images[0].fullUrl : ''}
+                  name={product.title}
+                  price={product.price.amount}
+                  sizes="L, M, S, XL"
+                  link={`/products/${product.slug}`}
+                  isLoved={isLoved && true}
+                  product={product}
+                />
+              )
+            })
         }
       </div>
       {

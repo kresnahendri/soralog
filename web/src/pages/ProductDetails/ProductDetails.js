@@ -35,7 +35,7 @@ const ProductDetails = (props) => {
   }
   if (product === null) {
     return (
-      <Flex fd="column">
+      <Flex fd="column" style={{ marginTop: '70px' }}>
         <LoadingIcon />
         <Text caption>Sedang Memuat...</Text>
       </Flex>
@@ -57,7 +57,7 @@ const ProductDetails = (props) => {
         detailMarkdown={product.detailMarkdown}
         descriptionMarkdown={product.descriptionMarkdown}
       />
-      <ProductList />
+      <ProductList match={props.match} />
     </Main>
   )
 }

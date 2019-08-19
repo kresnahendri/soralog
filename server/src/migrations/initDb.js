@@ -1,5 +1,6 @@
 import { switchMap } from 'rxjs/operators'
 import { from, zip } from 'rxjs'
+import mongoose from 'mongoose'
 import db from '../lib/db'
 import logger from '../lib/logger'
 import Product from '../models/product'
@@ -35,6 +36,8 @@ db.connectMongo()
   )
   .subscribe({
     error: (error) => logger.error(error),
-    next: (x) => logger.info(`Data migration is completed: ${x.length} total data inserted`),
-    complete: () => process.exit(),
+    next: (x) => {
+      mongoose.disconnect()
+        .then(() => logger.info(`Data migration is completed: ${x.length} total data inserted`))
+    },
   })

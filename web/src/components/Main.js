@@ -5,6 +5,6 @@ export default styled.main`
   flex: 1 1 0%;
   max-width: 480px;
   margin: 0px auto;
-  height: 100vh;
-  min-height: 100vh;
+  height: 80vh;
+  min-height: 80vh;
 `

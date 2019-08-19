@@ -7,8 +7,9 @@
   "author": "kresnahendri <kresnahendri@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"cd server && npm install && npm run migration:mongo-init && npm run start\" \"cd web && npm install && npm run dev\" \"cd dashboard && npm install && npm run dev\"",
-    "start:no-install": "concurrently \"cd server && npm run migration:mongo-init && npm run start\" \"cd web && npm run dev\""
+    "start": "concurrently \"cd server && npm install && npm run start\" \"cd web && npm install && npm run dev\" \"cd dashboard && npm install && npm run dev\"",
+    "start:noinstall": "concurrently \"cd server && npm run start\" \"cd web && npm run dev\" \"cd dashboard && npm run dev\"",
+    "migrate:init": "cd server && npm run migration:mongo-init"
   },
   "dependencies": {
     "concurrently": "^4.1.2"

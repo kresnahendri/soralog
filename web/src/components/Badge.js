@@ -9,8 +9,12 @@ export default styled.div`
   border-width: 1px;
   border-style: solid;
   border-color: rgb(255, 255, 255);
-  background-color: ${(props) => props.primary};
-  display: inline-block;
+  background-color: ${(props) => props.theme.color.primary};
+  color: white;
+  font-size: 8px;
+  display: flex;
   box-sizing: border-box;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 `

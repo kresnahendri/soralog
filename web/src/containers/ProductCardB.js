@@ -6,6 +6,7 @@ import {
 import asset from '../constants/asset'
 import theme from '../constants/theme'
 import history from '../routes/history'
+import wishlistService from '../services/wishlistService'
 
 const Image = styled.img`
   width: 100%;
@@ -14,14 +15,8 @@ const Name = styled(Text)`
   margin: 0px;
   color: rgb(82, 82, 82);
   width: 100%;
-  /* text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden; */
 `
 const TextWrapper = styled.div`
-  /* @media screen and (max-width: 375px){
-    max-width: 170px;
-  } */
 `
 const Label = styled.div`
   z-index: 2;
@@ -35,21 +30,24 @@ const Label = styled.div`
   font-weight: border-left;
 `
 const ProductCard = ({
-  img, name, price, sizes, isLoved, label, link,
+  img, name, price, sizes, isLoved, label, link, product,
 }) => {
   const [loved, setLoved] = React.useState(isLoved)
   const selectedHeart = loved ? asset.icon.heartActive : asset.icon.heart
 
   const handleLoved = () => {
+    if (loved) {
+      wishlistService.removeWishlist(product)
+    } else {
+      wishlistService.addWishlist(product)
+    }
     setLoved(!loved)
   }
 
   return (
     <div>
       <div style={{ position: 'relative' }}>
-        {/* <Link to={link}> */}
         <Image src={img} onClick={() => history.push(link)} />
-        {/* </Link> */}
         {
           label &&
           <Label><Text medium>{label}</Text></Label>
