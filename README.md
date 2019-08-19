@@ -1,6 +1,6 @@
 # soralog
 
-Ecommerce catalog inspired by Sorabel. Frontend was built using ReactJS and Backend built by NodeJS.
+Ecommerce catalog inspired by Sorabel. Frontend was built using ReactJS: (Styled components as syling tools, Redux as state management). Backend built by NodeJS (Apollo & Express as server provider, MongoDB as database). and use RxJS as async handler on both side (client & server).
 Communation that using is REST API and GraphQL. Below are the available features.
 
 **Web**
@@ -52,6 +52,15 @@ npm run start:noinstall
 | Dashboard | <http://localhost:3001> |
 | Server - GQL | <http://localhost:4000/graphql> (powered by Apollo Playground) |
 | Server - REST | <http://localhost:4000/api> |
+
+### ENV_VAR
+
+```bash
+MONGO_URL=mongodb://localhost:27017/soralog # currently using mlab, You can see detail in env.js in server
+JWT_SECRET=rahasianegara
+API_URL=http://localhost:4000/api
+GQL_URL=http://localhost:4000/graphql
+```
 
 ### Run independently
 
