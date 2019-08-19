@@ -76,10 +76,9 @@ npm start
 
 ### Web
 
-<img src="http://recordit.co/yccCbWjGe4.gif" style="width: 48%" alt="Catalog"/>
-<img src="http://recordit.co/Qn4P7H6P7g.gif" style="width: 48%" alt="Product Detail"/>
-<img src="http://g.recordit.co/OEgctpCZ4B.gif" style="width: 48%" alt="Wishlist"/>
-<img src="http://recordit.co/cLUOmZxbc4.gif" style="width: 48%" alt="Cart"/>
+![Catalog](http://recordit.co/yccCbWjGe4.gif) ![Product Details](http://recordit.co/Qn4P7H6P7g.gif)
+![Wishlist](http://g.recordit.co/OEgctpCZ4B.gif)
+![Cart](http://recordit.co/cLUOmZxbc4.gif)
 
 ### Dashboard
 
