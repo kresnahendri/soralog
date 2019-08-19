@@ -87,5 +87,6 @@ npm start
 ## How to Test
 
 ```bash
-TODO
+# Server
+cd server && npm test
 ```

@@ -30,3 +30,5 @@ db.connectMongo()
       logger.info(`🚀  Server ready at port ${PORT}`)
     })
   })
+
+export default app

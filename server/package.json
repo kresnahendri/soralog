@@ -7,7 +7,8 @@
     "start": "nodemon --exec babel-node src/index.js",
     "build": "babel src -d build",
     "migration:mongo-init": "npm run build && node build/migrations/initDb.js",
-    "lint": "eslint . --ignore-pattern .eslintignore"
+    "lint": "eslint . --ignore-pattern .eslintignore",
+    "test": "mocha --require @babel/register --exit"
   },
   "author": "kresnahendri",
   "license": "ISC",
@@ -34,6 +35,7 @@
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.5.5",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
@@ -41,6 +43,8 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-import-resolver-webpack": "^0.11.1",
@@ -49,6 +53,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-watch": "^5.1.2",
-    "nodemon": "^1.19.1"
+    "mocha": "^6.2.0",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2"
   }
 }
