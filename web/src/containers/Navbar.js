@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Flex } from '../components'
 import asset from '../constants/asset'
+import history from '../routes/history'
 
 const Root = styled(Flex)`
   position: fixed;
@@ -58,9 +59,16 @@ const Navbar = ({ icon, title, right }) => {
       <Wrapper>
         {
           !isRootPath && (
-            <Link to={link}>
-              <Icon src={icon} />
-            </Link>
+            <Icon
+              src={icon}
+              onClick={() => {
+                if (history.length > 2) {
+                  history.goBack()
+                } else {
+                  history.push(link)
+                }
+              }}
+            />
           )}
         {
           isRootPath

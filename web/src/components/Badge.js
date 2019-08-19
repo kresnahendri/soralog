@@ -17,4 +17,10 @@ export default styled.div`
   text-align: center;
   justify-content: center;
   align-items: center;
+  animation: bounce .3s;
+  @keyframes bounce {
+    0% { transform: scale(.8); } 
+    30% { transform: scale(1.2); } 
+    100% { transform: scale(1); } 
+  }
 `

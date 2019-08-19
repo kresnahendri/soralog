@@ -36,6 +36,10 @@ const NavContentIcons = (props) => {
       </IconWrapper>
       <IconWrapper onClick={() => history.push('/cart')}>
         <img style={imgStyles} src={asset.icon.cart} alt="" />
+        {
+          props.cart.length !== 0 &&
+          <Badge primary>{props.cart.length}</Badge>
+        }
       </IconWrapper>
     </Flex>
   )
@@ -47,7 +51,7 @@ const Routes = (props) => {
         <Navbar
           icon={asset.icon.back}
           title={<Text title>{props.title}</Text>}
-          right={<NavContentIcons wishlist={props.wishlist} />}
+          right={<NavContentIcons wishlist={props.wishlist} cart={props.cart} />}
 
         />
         <Switch>
@@ -64,4 +68,5 @@ const Routes = (props) => {
 export default connect((state) => ({
   title: state.ui.title,
   wishlist: state.product.wishlist,
+  cart: state.product.cart,
 }))(Routes)

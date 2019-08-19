@@ -7,6 +7,7 @@ import asset from '../constants/asset'
 import theme from '../constants/theme'
 import history from '../routes/history'
 import wishlistService from '../services/wishlistService'
+import cartService from '../services/cartService'
 
 const Image = styled.img`
   width: 100%;
@@ -70,7 +71,10 @@ const ProductCard = ({
               onClick={() => handleLoved()}
               role="presentation"
             />
-            <Button>BELI</Button>
+            <Button
+              onClick={() => cartService.addItem(product)}
+            >BELI
+            </Button>
           </Flex>
         </Flex>
       </Container>

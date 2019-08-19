@@ -1,20 +1,34 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
 import {
   Container, Text, Flex, Divider, Button,
 } from '../../../components'
 import asset from '../../../constants/asset'
 import theme from '../../../constants/theme'
+import cartService from '../../../services/cartService'
+import wishlistService from '../../../services/wishlistService'
 
 const Root = styled.div`
 `
 const MainInfo = ({
-  title, price, material, variants,
+  title, price, material, variants, product, ...props
 }) => {
   const [isLoved, setIsLoved] = useState(false)
   const handleSave = () => {
+    if (isLoved) {
+      wishlistService.removeWishlist(product)
+    } else {
+      wishlistService.addWishlist(product)
+    }
     setIsLoved(!isLoved)
   }
+
+  React.useEffect(() => {
+    const found = props.wishlist.find((w) => w.slug === product.slug)
+    if (found) { setIsLoved(true) }
+  }, [props.wishlist])
+
   return (
     <Root>
       <Container style={{ padding: '10px 16px' }}>
@@ -49,11 +63,17 @@ const MainInfo = ({
               <Text style={{ color: isLoved ? theme.color.primary : theme.color.grey01 }}>SIMPAN</Text>
             </Flex>
           </Button>
-          <Button style={{ flex: 4 }}>BELI SEKARANG</Button>
+          <Button
+            style={{ flex: 4 }}
+            onClick={() => cartService.addItem(product)}
+          >BELI SEKARANG
+          </Button>
         </Flex>
       </Container>
     </Root>
   )
 }
 
-export default MainInfo
+export default connect((state) => ({
+  wishlist: state.product.wishlist,
+}))(MainInfo)

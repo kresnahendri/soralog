@@ -51,6 +51,7 @@ const ProductDetails = (props) => {
           price={product.price.amount}
           material={product.material}
           variants={product.variants}
+          product={product}
         />
       </Card>
       <DetailDescription

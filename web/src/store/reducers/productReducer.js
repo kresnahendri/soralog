@@ -1,7 +1,17 @@
-import { SET_PRODUCTS, SET_WISHLIST, RESET_PRODUCTS } from '../actionTypes'
+import {
+  RESET_PRODUCTS,
+  SET_PRODUCTS,
+  SET_WISHLIST,
+  SET_CART,
+} from '../actionTypes'
 
 const getWishlist = () => {
   const current = localStorage.getItem('wishlist')
+  return (current !== null) ? JSON.parse(current) : []
+}
+
+const getCart = () => {
+  const current = localStorage.getItem('cart')
   return (current !== null) ? JSON.parse(current) : []
 }
 
@@ -10,7 +20,7 @@ const initialState = {
   limit: 5,
   offset: 0,
   wishlist: getWishlist(),
-  cart: [],
+  cart: getCart(),
 }
 
 export default (state = initialState, action) => {
@@ -31,6 +41,11 @@ export default (state = initialState, action) => {
     return {
       ...state,
       wishlist: action.payload,
+    }
+  case SET_CART:
+    return {
+      ...state,
+      cart: action.payload,
     }
   case RESET_PRODUCTS: {
     return {

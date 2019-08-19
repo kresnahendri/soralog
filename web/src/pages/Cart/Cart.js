@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
@@ -24,13 +25,6 @@ const Cart = (props) => {
 
   return (
     <Main style={{ position: 'relative' }}>
-      <Card>
-        {
-          cart.map((item) => (
-            <CartItem item={item} />
-          ))
-        }
-      </Card>
       {
         cart.length === 0 && (
           <Card style={{ padding: '20px' }}>
@@ -40,20 +34,32 @@ const Cart = (props) => {
           </Card>
         )
       }
-      <PayFooter>
-        <Flex jc="space-between">
-          <Text>Total (Sebelum Ongkir)</Text>
-          <Text bold>1230000</Text>
-        </Flex>
-        <Box h="5" />
-        <Divider />
-        <Box h="10" />
-        <Button onClick={() => alert('Thank YOU')}>BAYAR</Button>
-      </PayFooter>
+      <Card>
+        {
+          cart.map((item) => (
+            <CartItem item={item} />
+          ))
+        }
+      </Card>
+      {
+        cart.length > 0 && (
+          <PayFooter>
+            <Flex jc="space-between">
+              <Text>Total (Sebelum Ongkir)</Text>
+              <Text bold>
+                {props.cart.reduce((total, item) => total + item.price.amount, 0)}
+              </Text>
+            </Flex>
+            <Box h="5" />
+            <Divider />
+            <Box h="10" />
+            <Button onClick={() => alert('Thank YOU')}>BAYAR</Button>
+          </PayFooter>
+        )}
     </Main>
   )
 }
 
 export default connect((state) => ({
-  cart: state.product.wishlist,
+  cart: state.product.cart,
 }), { setTitle })(Cart)

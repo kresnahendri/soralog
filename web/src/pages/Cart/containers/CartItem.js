@@ -4,6 +4,7 @@ import {
   Flex, Text, Divider, Box,
 } from '../../../components'
 import asset from '../../../constants/asset'
+import cartService from '../../../services/cartService'
 
 const Root = styled.div`
   padding: 20px;
@@ -21,7 +22,7 @@ const CartItem = ({ item }) => {
                 src={asset.icon.close}
                 alt=""
                 style={{ width: '20px', cursor: 'pointer' }}
-                onClick={() => {}}
+                onClick={() => cartService.removeItem(item)}
                 role="presentation"
               />
               <Box h="5" />

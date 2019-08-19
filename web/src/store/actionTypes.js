@@ -1,5 +1,5 @@
 export const SET_PRODUCTS = 'SET_PRODUCTS'
 export const RESET_PRODUCTS = 'RESET_PRODUCTS'
 export const SET_WISHLIST = 'SET_WISHLIST'
+export const SET_CART = 'SET_CART'
 export const SET_TITLE = 'SET_TITLE'
-export const SHOW_BUY_BACKDROP = 'SHOW_BUY_BACKDROP'

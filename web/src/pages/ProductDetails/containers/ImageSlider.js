@@ -25,8 +25,8 @@ const Thumbnail = styled.div`
   flex-shrink: 1;
   cursor: pointer;
   > img {
-    width: 56px;
-    height: 56px;
+    width: 50px;
+    height: 50px;
     border-radius: 4px;
   }
 `
