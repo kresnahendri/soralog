@@ -7,7 +7,7 @@
     "start": "nodemon --exec babel-node src/index.js",
     "build": "babel src -d build",
     "migration:mongo-init": "npm run build && node build/migrations/initDb.js",
-    "lint": "esw ."
+    "lint": "eslint . --ignore-pattern .eslintignore"
   },
   "author": "kresnahendri",
   "license": "ISC",

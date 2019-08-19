@@ -1,0 +1,6 @@
+
+config/
+dist/
+build/
+node_modules/
+public/
